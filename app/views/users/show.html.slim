@@ -1,0 +1,11 @@
+table.table.table-striped
+  tr
+    th Email:
+    td= @user.email
+  tr
+    th Role:
+    td= @user.role
+
+.btn-group
+  = link_to "Edit", edit_user_path(@user), class: "btn btn-default"
+  = link_to "Back", users_path, class: "btn btn-default"

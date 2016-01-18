@@ -8,4 +8,6 @@ class User < ApplicationRecord
     manager: 20,
     admin: 30
   }
+
+  has_many :oauth_applications, class_name: "Doorkeeper::Application"
 end

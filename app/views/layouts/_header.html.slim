@@ -9,8 +9,8 @@ nav.navbar.navbar-inverse role="navigation"
       = link_to 'r5template', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse#navbar-collapse
       ul.nav.navbar-nav
-        li = link_to 'Link', '#'
-        li = link_to 'Link', '#'
+        li = link_to 'Users', '#'
+        li = link_to 'Applications', oauth_applications_path
       //
         ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
