@@ -8,15 +8,17 @@ Doorkeeper.configure do
     # Put your resource owner authentication logic here.
     # Example implementation:
     #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
-    User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+    current_user || warden.authenticate!(scope: :user)
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
-  # admin_authenticator do
+  admin_authenticator do
   #   # Put your admin authentication logic here.
   #   # Example implementation:
   #   Admin.find_by_id(session[:admin_id]) || redirect_to(new_admin_session_url)
-  # end
+    warden.authenticated!(scope: :user) unless current_user
+    current_user && current_user.admin? ? current_user : redirect_to('/')
+  end
 
   # Authorization Code expiration time (default 10 minutes).
   # authorization_code_expires_in 10.minutes
@@ -99,9 +101,10 @@ Doorkeeper.configure do
   # Under some circumstances you might want to have applications auto-approved,
   # so that the user skips the authorization step.
   # For example if dealing with a trusted application.
-  # skip_authorization do |resource_owner, client|
+  skip_authorization do |resource_owner, client|
   #   client.superapp? or resource_owner.admin?
-  # end
+    true
+  end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
   # realm "Doorkeeper"
