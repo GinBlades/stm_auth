@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 52b1ca2d801b2f511bb2fef4c48f96c8576a63ac
+  revision: cc02d06c5823c667a53c52f6dddafe3109450d7d
   specs:
     devise (4.0.0.pre.dev)
       bcrypt (~> 3.0)
@@ -168,6 +168,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (2.15.3)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (2.0.0.alpha)
@@ -311,6 +313,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
+  pundit
   quiet_assets
   rails (>= 5.0.0.beta1, < 5.1)
   rspec-rails
@@ -327,4 +330,4 @@ DEPENDENCIES
   web-console (~> 3.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
