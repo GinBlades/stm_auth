@@ -4,7 +4,7 @@ class Oauth::UsersController < ApplicationController
 
   # GET /me.json
   def me
-    respond_with current_resource_owner
+    respond_with current_resource_owner, root: false
   end
 
   private

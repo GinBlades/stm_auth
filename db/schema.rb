@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160118061620) do
+ActiveRecord::Schema.define(version: 20160120035430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "oauth_access_grants", force: :cascade do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "application_id", null: false
-    t.string   "token",          null: false
-    t.integer  "expires_in",     null: false
-    t.text     "redirect_uri",   null: false
-    t.datetime "created_at",     null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
     t.datetime "revoked_at"
     t.string   "scopes"
+    t.integer  "resource_owner_id", null: false
     t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
   end
 
@@ -80,5 +80,4 @@ ActiveRecord::Schema.define(version: 20160118061620) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
-  add_foreign_key "oauth_access_grants", "users"
 end
